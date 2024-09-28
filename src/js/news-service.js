@@ -22,8 +22,9 @@ export async function fetchNews(searchQuery, currentPage = 1) {
     
     // console.log(data);
     try {
-        const {data: hits, totalHits} = await axios.get(url);
-        if (!hits || hits.length === 0) {
+        const { data } = await axios.get(url);
+        const { hits, totalHits } = data;
+        if (!Array.isArray(hits) || hits.length === 0) {
             iziToast.show({
                 message: `'Sorry, there are no images matching your search query. Please try again!'`,
                 position: 'topCenter',
@@ -38,13 +39,16 @@ export async function fetchNews(searchQuery, currentPage = 1) {
             overlayOpacity: 0.7,
             className: 'lightbox',
         });
-        
+
         createGalleryMarkup(hits, refs.container);
 
         showBox.refresh();
     } catch (error) {
         console.log(error);
     } finally {
-        loader.classList.add('hidden');
+            const loader = document.getElementById('loader');
+            if (loader) {
+            loader.classList.add('hidden');
+            }
     }
 }
