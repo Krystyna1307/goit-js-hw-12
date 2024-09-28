@@ -19,6 +19,11 @@
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 16px;
+  background-color: #4a7aff; /* Blue background */
+  color: white; /* White text */
+}
+.btn:hover {
+  background-color: #759aff; /* Lighter blue background */
 }
 
 .gallery {
@@ -81,24 +86,18 @@
 }
 
 .js-search-form input:hover {
-  border-color: #007bff;
+  border-color: #000;
 }
 .js-search-form input:focus {
-  border-color: #070707;
+  border-color: #000;
+  box-shadow: 0 0 4px #007bff;
   outline: none;
 }
 
 .js-search-form button {
-  padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
-  background-color: #4a7cff; /* колір для нормального стану */
-  color: white;
-}
-.btn:hover {
-  background-color: #6a9bff; /* колір для hover-ефекту */
 }
 
 /* loader */
@@ -137,6 +136,13 @@
   }
 }
 
-.hidden {
+.is-hidden {
   display: none;
+}
+/* load-more кнопка */
+.btn-load {
+  display: flex;
+  margin: 0 auto;
+  border-radius: 4px;
+  cursor: pointer;
 }

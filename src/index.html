@@ -12,14 +12,14 @@
       <input
         class="search-input"
         type="input"
-        name="searchValue"
+        name="newsKeyword"
         placeholder="Search images..."
       />
       <button type="submit" class="btn">Search</button>
     </form>
-    <span class="loader hidden" id="loader"></span>
+    <span class="loader js-loader" id="loader"></span>
 
-    <ul class="gallery"></ul>
+    <ul class="gallery js-cards-container"></ul>
 
     <!-- <li class="li-gallery">
       <div class="img-box">
@@ -50,6 +50,8 @@
         </div>
       </div>
     </li> -->
+
+    <button hidden class="btn-load btn js-load-more">Load more</button>
 
     <script type="module" src="./js/pixabay-api.js"></script>
     <script type="module" src="./main.js"></script>
