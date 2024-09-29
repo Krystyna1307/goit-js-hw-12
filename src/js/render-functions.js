@@ -1,4 +1,4 @@
-export default function createGalleryMarkup(hits, wrapper) {
+export function createGalleryMarkup(hits, wrapper) {
     const hitsMarkup = hits
         .map(hit => `<li class="li-gallery">
             <div class="img-box">
