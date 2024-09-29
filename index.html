@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     <script type="module" crossorigin src="/goit-js-hw-12/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-CT7mAZ4U.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-CRCB-GUD.js">
     <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/vendor-DumFYO8Z.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-COD6YpId.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-Bl2BL4ME.css">
   </head>
   <body>
     <form class="form js-search-form">
+      <span class="loader is-hidden js-loader" id="loader"></span>
       <input
         class="search-input"
         type="input"
@@ -20,7 +21,6 @@
       />
       <button type="submit" class="btn">Search</button>
     </form>
-    <span class="loader js-loader" id="loader"></span>
 
     <ul class="gallery js-cards-container"></ul>
 
@@ -54,7 +54,7 @@
       </div>
     </li> -->
 
-    <button hidden class="btn-load btn js-load-more">Load more</button>
+    <button class="btn-load btn is-hidden js-load-more">Load more</button>
 
   </body>
 </html>
