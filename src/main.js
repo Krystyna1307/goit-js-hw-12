@@ -21,7 +21,17 @@ function handleSubmit(event) {
     event.preventDefault();
 
     const form = event.currentTarget;
-    searchQuery = form.elements.newsKeyword.value; // Перевизначаємо значення пошукового запиту
+    searchQuery = form.elements.newsKeyword.value.trim(); //для видалення пробілів; // Перевизначаємо значення пошукового запиту
+    
+    if (searchQuery === '') { //Перевірка на порожній запит
+        iziToast.show({
+            message: 'Please enter a valid search query',
+            position: 'topCenter',
+            color: 'red',
+        });
+        return;
+    }
+
     currentPage = 1; // Скидаємо сторінку на 1
     refs.container.innerHTML = ''; // Очищуємо контейнер перед наступним запитом
 
@@ -73,6 +83,13 @@ async function fetchNews(searchQuery, form, currentPage = 1) {
 
     } catch (error) {
         console.log(error);
+        iziToast.show({
+            message: 'An error occurred while fetching data',
+            position: 'topCenter',
+            color: 'red',
+        });
+        refs.loadMoreBtn.classList.add('is-hidden'); // Приховуємо кнопку у випадку помилки
+        
     } finally {
         loader.classList.add('is-hidden');
         form.reset();
