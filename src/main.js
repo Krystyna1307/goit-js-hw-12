@@ -67,9 +67,19 @@ async function fetchNews(searchQuery, form, currentPage = 1) {
         }
 
         createGalleryMarkup(hits, refs.container);
-        
 
-        refs.loadMoreBtn.classList.remove('is-hidden'); // Показуємо кнопку після отримання результатів
+        // Якщо ми на останній сторінці, приховуємо кнопку
+        if (currentPage >= pages) {
+            refs.loadMoreBtn.classList.add('is-hidden');
+            iziToast.show({
+                message: 'You have reached the end of search results.',
+                position: 'topCenter',
+                color: 'blue',
+            });
+        } else {
+            refs.loadMoreBtn.classList.remove('is-hidden'); // Показуємо кнопку після отримання результатів
+        }
+        
 
         const showBox = new SimpleLightbox('.img-box a', {
             captions: true,
@@ -97,18 +107,23 @@ async function fetchNews(searchQuery, form, currentPage = 1) {
 }
 
 async function handleLoadMore() {
+
     if (currentPage >= pages) { // Перевіряємо, чи є ще сторінки для завантаження
+
+        // refs.loadMoreBtn.classList.add('is-hidden'); // Приховуємо кнопку
+
         iziToast.show({
             message: 'Were sorry, but youve reached the end of search results',
             position: 'topCenter',
             color: 'blue',
         });
-        refs.loadMoreBtn.classList.add('is-hidden');
         return;
     }
 
     currentPage += 1; // Збільшуємо номер поточної сторінки
     refs.loader.classList.remove('is-hidden'); // Показуємо лоадер
+
+
 
     await fetchNews(searchQuery, refs.form, currentPage); // Використовуємо await для асинхронного виклику
     refs.loader.classList.add('is-hidden'); // Ховаємо лоадер після завантаження
